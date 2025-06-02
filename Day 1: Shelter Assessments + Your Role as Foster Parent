@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Understanding Foster Care + Your Role</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #7DD3C0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .lesson-header {
+            background: #2D8B7B;
+            color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(45, 139, 123, 0.3);
+        }
+        
+        .lesson-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .lesson-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+        
+        .goal-highlight {
+            background: #7DD3C0;
+            border: 3px solid #2D8B7B;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        
+        .goal-highlight h3 {
+            color: #2D8B7B;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-title {
+            color: #2D8B7B;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 35px 0 20px 0;
+            border-bottom: 3px solid #7DD3C0;
+            padding-bottom: 10px;
+        }
+        
+        .info-box {
+            background: #7DD3C0;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2D8B7B;
+        }
+        
+        .info-box h4 {
+            color: #2D8B7B;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .warning-box {
+            background: #FFE5B4;
+            border: 2px solid #D4A574;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .warning-box h4 {
+            color: #8B6914;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .emergency-box {
+            background: #FFE1E1;
+            border: 2px solid #D47474;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .emergency-box h4 {
+            color: #8B1414;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .contact-template {
+            background: white;
+            border: 3px solid #2D8B7B;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+        }
+        
+        .contact-template div {
+            margin: 15px 0;
+            padding: 8px 0;
+            border-bottom: 1px dotted #7DD3C0;
+        }
+        
+        .interactive-section {
+            background: #F8FFFE;
+            border: 3px solid #7DD3C0;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .interactive-title {
+            color: #2D8B7B;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .checklist-container {
+            margin: 25px 0;
+        }
+        
+        .checklist-header {
+            color: #2D8B7B;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .check-item {
+            background: white;
+            border: 2px solid #E5E5E5;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .check-item:hover {
+            border-color: #7DD3C0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(125, 211, 192, 0.3);
+        }
+        
+        .check-item.completed {
+            border-color: #2D8B7B;
+            background: #F0FFF8;
+            transform: none;
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #2D8B7B;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .check-item.completed .checkbox {
+            background: #2D8B7B;
+        }
+        
+        .check-text {
+            flex: 1;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+        
+        .notes-area {
+            width: 100%;
+            min-height: 120px;
+            padding: 20px;
+            border: 2px solid #7DD3C0;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            margin: 20px 0;
+            resize: vertical;
+        }
+        
+        .notes-area:focus {
+            outline: none;
+            border-color: #2D8B7B;
+            box-shadow: 0 0 10px rgba(45, 139, 123, 0.3);
+        }
+        
+        .save-button {
+            background: #2D8B7B;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 25px auto;
+            min-width: 200px;
+        }
+        
+        .save-button:hover {
+            background: #236B5D;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(45, 139, 123, 0.4);
+        }
+        
+        .success-message {
+            background: #E8F5E8;
+            border: 2px solid #4CAF50;
+            color: #2E7D32;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .progress-bar {
+            background: #E5E5E5;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #7DD3C0, #2D8B7B);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #2D8B7B;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .completion-box {
+            background: #7DD3C0;
+            border: 3px solid #2D8B7B;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .completion-box h3 {
+            color: #2D8B7B;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+        p {
+            margin: 15px 0;
+            line-height: 1.7;
+        }
+        
+        strong {
+            color: #2D8B7B;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .lesson-header {
+                padding: 30px 20px;
+            }
+            
+            .lesson-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-section {
+                padding: 25px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lesson-header">
+            <h1>Day 1: Understanding Foster Care + Your Role</h1>
+            <p>Essential knowledge you need before your foster dog arrives</p>
+        </div>
+
+        <div class="content-section">
+            <div class="goal-highlight">
+                <h3>Today's Learning Goal</h3>
+                <p><strong>Understand your role as a foster parent BEFORE your dog arrives.</strong> Know what you're responsible for, what the rescue handles, and how to read your foster's background information properly.</p>
+            </div>
+
+            <h2 class="section-title">What Is Foster Care?</h2>
+            
+            <p>Foster care means providing a <strong>temporary safe home</strong> for a dog while they wait for their permanent family. You are the bridge between their past and their future - giving them time to heal, decompress, and show their true personality.</p>
+            
+            <div class="info-box">
+                <h4>Your Core Responsibilities as a Foster Parent</h4>
+                <ul>
+                    <li><strong>Daily care provider:</strong> Food, water, shelter, exercise, basic routine</li>
+                    <li><strong>Safe space creator:</strong> Help them feel secure while they adjust</li>
+                    <li><strong>Behavior observer:</strong> Document their personality, preferences, and needs</li>
+                    <li><strong>Basic training provider:</strong> House rules, simple manners, routine structure</li>
+                    <li><strong>Adoption preparer:</strong> Help them become ready for their forever family</li>
+                </ul>
+            </div>
+
+            <h2 class="section-title">What is NOT Your Responsibility</h2>
+            
+            <p>Understanding boundaries is crucial for a successful foster experience:</p>
+            
+            <div class="warning-box">
+                <h4>What You Are NOT Expected to Do</h4>
+                <ul>
+                    <li><strong>Fix serious behavioral problems:</strong> Major issues require professional trainers</li>
+                    <li><strong>Cover medical expenses:</strong> The rescue organization handles all veterinary costs</li>
+                    <li><strong>Find the adopter:</strong> Rescue manages applications, screening, and final placement</li>
+                    <li><strong>Be a perfect trainer:</strong> You're providing care and basic structure, not professional training</li>
+                    <li><strong>Keep them forever:</strong> The goal is successful adoption to the right family</li>
+                </ul>
+            </div>
+
+            <h2 class="section-title">Understanding Your Foster's Background</h2>
+            
+            <p>Your rescue will provide background information about your foster dog. Learning to interpret this information helps set realistic expectations:</p>
+            
+            <div class="info-box">
+                <h4>Common Assessment Terms and Real Meanings</h4>
+                <p><strong>"Good with kids":</strong> Tested briefly in shelter environment - observe carefully in your home</p>
+                <p><strong>"House trained":</strong> Understood routine in previous environment - may need refresher in yours</p>
+                <p><strong>"Dog reactive":</strong> Shows excitement or fear around other dogs - manageable with proper introduction</p>
+                <p><strong>"Shy or timid":</strong> May have experienced trauma - needs patience and gentle handling</p>
+                <p><strong>"High energy":</strong> Requires substantial exercise and mental stimulation daily</p>
+                <p><strong>"Owner surrender":</strong> Previous family could not keep them - often well-socialized</p>
+                <p><strong>"Stray":</strong> Found wandering - unknown background, may need extra socialization time</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>Critical Understanding: Shelter vs Home Behavior</h4>
+                <p>Dogs behave completely differently in shelter environments versus home settings. High stress, constant noise, and confined spaces create behaviors that may not reflect their true personality. A "withdrawn" dog might be confident at home, while a "social" dog might need decompression time. Allow 2-3 weeks minimum to see their authentic personality emerge.</p>
+            </div>
+
+            <h2 class="section-title">Communication with Your Rescue Organization</h2>
+            
+            <div class="emergency-box">
+                <h4>Contact Rescue IMMEDIATELY For</h4>
+                <ul>
+                    <li>Medical emergencies, injuries, or signs of serious illness</li>
+                    <li>Aggressive behavior toward people or concerning safety issues</li>
+                    <li>Dog escape, lost dog, or security breaches</li>
+                    <li>Situations where you feel unsafe or overwhelmed</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h4>Schedule Regular Contact For</h4>
+                <ul>
+                    <li>Behavioral questions, training advice, or management strategies</li>
+                    <li>Supply needs such as food, equipment, or medication</li>
+                    <li>Schedule changes, timeline adjustments, or availability updates</li>
+                    <li>Progress reports, positive updates, and preparation for adoption</li>
+                </ul>
+            </div>
+
+            <h2 class="section-title">Essential Emergency Contacts</h2>
+            
+            <p><strong>Complete this information NOW and save all numbers in your phone:</strong></p>
+            
+            <div class="contact-template">
+                <div><strong>Primary Rescue Coordinator:</strong> _________________________________</div>
+                <div><strong>Emergency After-Hours Contact:</strong> _________________________________</div>
+                <div><strong>Assigned Veterinary Clinic:</strong> _________________________________</div>
+                <div><strong>24-Hour Emergency Vet Clinic:</strong> _________________________________</div>
+                <div><strong>Foster Mentor or Buddy:</strong> _________________________________</div>
+            </div>
+
+            <h2 class="section-title">Realistic Timeline Expectations</h2>
+            
+            <p>Understanding the adjustment timeline helps manage expectations and reduce anxiety:</p>
+            
+            <div class="info-box">
+                <h4>The 3-3-3 Decompression Rule</h4>
+                <p><strong>First 3 Days:</strong> Decompression period - dog feels overwhelmed, may hide, refuse food, show stress behaviors</p>
+                <p><strong>First 3 Weeks:</strong> Learning your routine - beginning to show glimpses of true personality, establishing trust</p>
+                <p><strong>First 3 Months:</strong> Full settlement - authentic personality emerges, complete comfort in environment</p>
+                <p><em>Note: As a foster family, you will likely see them through the first few weeks of this process before they move to their permanent home.</em></p>
+            </div>
+        </div>
+
+        <div class="interactive-section">
+            <h3 class="interactive-title">Day 1 Readiness Assessment</h3>
+            <p style="text-align: center; margin-bottom: 25px;">Complete this checklist to ensure you're prepared before your foster dog arrives:</p>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">0% Complete</div>
+            
+            <div class="checklist-container">
+                <div class="checklist-header">Knowledge and Preparation Checklist</div>
+                
+                <div class="check-item" onclick="toggleCheckbox(this)">
+                    <div class="checkbox"></div>
+                    <div class="check-text">I understand what foster care means and my specific role as a foster parent</div>
+                </div>
+                
+                <div class="check-item" onclick="toggleCheckbox(this)">
+                    <div class="checkbox"></div>
+                    <div class="check-text">I have saved all emergency contact numbers in my phone</div>
+                </div>
+                
+                <div class="check-item" onclick="toggleCheckbox(this)">
+                    <div class="checkbox"></div>
+                    <div class="check-text">I have received and carefully read my foster dog's background information</div>
+                </div>
+                
+                <div class="check-item" onclick="toggleCheckbox(this)">
+                    <div class="checkbox"></div>
+                    <div class="check-text">I understand that shelter behavior differs significantly from home behavior</div>
+                </div>
+                
+                <div class="check-item" onclick="toggleCheckbox(this)">
+                    <div class="checkbox"></div>
+                    <div class="check-text">I understand the 3-3-3 rule and have realistic timeline expectations</div>
+                </div>
+                
+                <div class="check-item" onclick="toggleCheckbox(this)">
+                    <div class="checkbox"></div>
+                    <div class="check-text">I know when to contact rescue immediately versus when to schedule regular check-ins</div>
+                </div>
+                
+                <div class="check-item" onclick="toggleCheckbox(this)">
+                    <div class="checkbox"></div>
+                    <div class="check-text">I have realistic expectations about what I am and am not responsible for</div>
+                </div>
+            </div>
+            
+            <div class="checklist-container">
+                <div class="checklist-header">Questions and Concerns</div>
+                <textarea class="notes-area" id="notes" placeholder="Write any questions about foster care, concerns about your specific dog's background, or areas where you need additional clarity. Share these with your rescue coordinator during your next conversation."></textarea>
+            </div>
+            
+            <button class="save-button" onclick="saveProgress()">Save My Day 1 Progress</button>
+            
+            <div class="success-message" id="successMessage">
+                Day 1 Assessment Complete! You are prepared to move forward to Day 2: Setting Up Your Home Environment.
+            </div>
+        </div>
+
+        <div class="completion-box">
+            <h3>Day 1 Complete</h3>
+            <p>You now have a solid understanding of your role as a foster parent and realistic expectations for the journey ahead. Tomorrow, we will focus on preparing your physical environment before your foster dog arrives.</p>
+            <p><strong>Next Lesson: Day 2 - Setting Up Your Home and Creating Safe Spaces</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCheckbox(element) {
+            const checkbox = element.querySelector('.checkbox');
+            const isCompleted = element.classList.contains('completed');
+            
+            if (isCompleted) {
+                element.classList.remove('completed');
+                checkbox.innerHTML = '';
+            } else {
+                element.classList.add('completed');
+                checkbox.innerHTML = '✓';
+            }
+            
+            updateProgress();
+            saveToStorage();
+        }
+        
+        function updateProgress() {
+            const totalItems = document.querySelectorAll('.check-item').length;
+            const completedItems = document.querySelectorAll('.check-item.completed').length;
+            const percentage = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+            
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            progressBar.style.width = percentage + '%';
+            progressText.textContent = percentage + '% Complete';
+            
+            if (percentage === 100) {
+                progressText.textContent = 'Assessment Complete!';
+                progressText.style.color = '#2D8B7B';
+                progressText.style.fontWeight = '700';
+            }
+        }
+        
+        function saveProgress() {
+            const completedItems = document.querySelectorAll('.check-item.completed').length;
+            const totalItems = document.querySelectorAll('.check-item').length;
+            const notes = document.getElementById('notes').value;
+            
+            if (completedItems < totalItems) {
+                alert('Please complete all checklist items before saving your progress.');
+                return;
+            }
+            
+            if (!notes.trim()) {
+                const confirmSave = confirm('You have not added any notes. Would you like to save your progress anyway?');
+                if (!confirmSave) return;
+            }
+            
+            const progressData = {
+                day: 1,
+                completedDate: new Date().toISOString(),
+                totalItems: totalItems,
+                completedItems: completedItems,
+                notes: notes,
+                percentage: 100
+            };
+            
+            try {
+                localStorage.setItem('foster_day_1', JSON.stringify(progressData));
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            } catch (error) {
+                alert('Progress saved! You are ready to continue to Day 2.');
+            }
+        }
+        
+        function saveToStorage() {
+            const checklistState = [];
+            document.querySelectorAll('.check-item').forEach((item, index) => {
+                checklistState[index] = item.classList.contains('completed');
+            });
+            
+            const currentData = {
+                checklistState: checklistState,
+                notes: document.getElementById('notes').value,
+                lastUpdated: new Date().toISOString()
+            };
+            
+            try {
+                localStorage.setItem('foster_day_1_current', JSON.stringify(currentData));
+            } catch (error) {
+                // Storage not available, continue without saving
+            }
+        }
+        
+        function loadSavedProgress() {
+            try {
+                const saved = localStorage.getItem('foster_day_1_current');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    
+                    // Restore checklist state
+                    if (data.checklistState) {
+                        document.querySelectorAll('.check-item').forEach((item, index) => {
+                            if (data.checklistState[index]) {
+                                item.classList.add('completed');
+                                item.querySelector('.checkbox').innerHTML = '✓';
+                            }
+                        });
+                    }
+                    
+                    // Restore notes
+                    if (data.notes) {
+                        document.getElementById('notes').value = data.notes;
+                    }
+                    
+                    updateProgress();
+                }
+            } catch (error) {
+                // No saved data or storage not available
+            }
+        }
+        
+        // Auto-save notes as user types
+        document.getElementById('notes').addEventListener('input', saveToStorage);
+        
+        // Load any saved progress when page loads
+        document.addEventListener('DOMContentLoaded', loadSavedProgress);
+    </script>
+</body>
+</html>
